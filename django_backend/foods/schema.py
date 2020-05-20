@@ -67,6 +67,24 @@ class CreateSavedFood(graphene.Mutation):
 
         return CreateSavedFood(user=user, food=food)
 
+class DeleteSavedFood(graphene.Mutation):
+    saved_food_id = graphene.Int()
+
+    class Arguments:
+        saved_food_id = graphene.Int(required=True)
+
+    def mutate(self, info, saved_food_id):
+        user = info.context.user
+        saved_food = SavedFood.objects.get(id=saved_food_id)
+
+        if saved_food.user != user:
+            raise GraphQLError('Vous ne pouvez pas supprimer cette sauvegarde')
+
+        saved_food.delete()
+
+        return DeleteSavedFood(saved_food_id=saved_food_id)
+
 
 class Mutation(graphene.ObjectType):
     create_saved_food = CreateSavedFood.Field()
+    delete_saved_food = DeleteSavedFood.Field()
