@@ -4,13 +4,21 @@ import graphene
 from graphene_django import DjangoObjectType
 
 class UserType(DjangoObjectType):
+    ''' User infos '''
     class Meta:
         model = get_user_model()
 
 
 class Query(graphene.ObjectType):
-    user = graphene.Field(UserType, id=graphene.Int(required=True))
-    me = graphene.Field(UserType)
+    user = graphene.Field(
+        UserType,
+        id=graphene.Int(required=True),
+        description='Get any user by ID'
+    )
+    me = graphene.Field(
+        UserType,
+        description='Get informations about logged user'
+    )
 
     def resolve_user(self, info, id):
         return get_user_model().objects.get(id=id)
@@ -24,6 +32,7 @@ class Query(graphene.ObjectType):
 
 
 class CreateUser(graphene.Mutation):
+    ''' Create an user '''
     user = graphene.Field(UserType)
 
     class Arguments:

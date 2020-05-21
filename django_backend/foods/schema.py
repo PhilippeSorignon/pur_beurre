@@ -10,22 +10,37 @@ from users.schema import UserType
 
 
 class FoodType(DjangoObjectType):
+    ''' Informations about a food product '''
     class Meta:
         model = Food
 
 class SavedFoodType(DjangoObjectType):
+    ''' Informations about a saved food product '''
     class Meta:
         model = SavedFood
 
 class Query(graphene.ObjectType):
+    ''' Food related queries '''
     foods = graphene.List(
         FoodType,
-        search_title=graphene.String(),
-        search_category=graphene.String()
+        search_title=graphene.String(description='Used to search in the title'),
+        search_category=graphene.String(
+            description='Used to search with the categories'
+        ),
+        description="Get a list of foods"
     )
-    savedFoods = graphene.List(SavedFoodType)
+    savedFoods = graphene.List(
+        SavedFoodType,
+        description='Get a list of Saved Foods'
+    )
 
     def resolve_foods(self, info, search_title=None, search_category=None):
+        '''
+            Return a list of foods
+
+            Use "search_title" to return a list of foods wich contains your entries
+            Use "search categoriy to return all the foods in said category"
+        '''
         if search_title:
             return Food.objects.filter(name__icontains=search_title)
         elif search_category:
@@ -42,6 +57,7 @@ class Query(graphene.ObjectType):
 
 
 class CreateSavedFood(graphene.Mutation):
+    ''' Save a food for a logged user '''
     user = graphene.Field(UserType)
     food = graphene.Field(FoodType)
 
@@ -68,10 +84,14 @@ class CreateSavedFood(graphene.Mutation):
         return CreateSavedFood(user=user, food=food)
 
 class DeleteSavedFood(graphene.Mutation):
+    ''' Delete a food saved by the user '''
     saved_food_id = graphene.Int()
 
     class Arguments:
-        saved_food_id = graphene.Int(required=True)
+        saved_food_id = graphene.Int(
+        required=True,
+        description='ID of the saved food to delete'
+    )
 
     def mutate(self, info, saved_food_id):
         user = info.context.user

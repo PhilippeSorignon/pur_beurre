@@ -3,13 +3,14 @@ import foods.schema
 import users.schema
 import graphql_jwt
 
-class Query(users.schema.Query, foods.schema.Query, graphene.ObjectType):
+class Query(users.schema.Query, foods.schema.Query, graphene.ObjectType, description='Pur Beurre Queries'):
     pass
 
 class Mutation(
     users.schema.Mutation,
     foods.schema.Mutation,
-    graphene.ObjectType
+    graphene.ObjectType,
+    description='Pur Beurre Mutations'
 ):
     token_auth = graphql_jwt.ObtainJSONWebToken.Field()
     verify_token = graphql_jwt.Verify.Field()
