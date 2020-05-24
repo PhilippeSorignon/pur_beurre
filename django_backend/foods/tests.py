@@ -5,7 +5,7 @@ from graphql_jwt.testcases import JSONWebTokenTestCase
 from django.contrib.auth import get_user_model
 
 from foods.schema import Query, Mutation
-from foods.models import Food
+from foods.models import Food, SavedFood
 
 class FoodTestCase(GraphQLTestCase, JSONWebTokenTestCase):
     GRAPHQL_SCHEMA = Query
@@ -13,15 +13,15 @@ class FoodTestCase(GraphQLTestCase, JSONWebTokenTestCase):
     def setUp(self):
         self.user = get_user_model().objects.create(username='TestUser')
         self.client.authenticate(self.user)
-        Food.objects.create(id=1,
-                            name="Eau",
-                            nutriscore="a",
-                            url="http://eau.com/",
-                            image="http://eau.com/eau",
-                            category="drinks")
+        self.food = Food.objects.create(id=1,
+                                        name="Eau",
+                                        nutriscore="a",
+                                        url="http://eau.com/",
+                                        image="http://eau.com/eau",
+                                        category="drinks")
 
     def test_foods(self):
-
+        ''' Test the foods query '''
         response = self.query(
             '''
             {
@@ -47,36 +47,27 @@ class FoodTestCase(GraphQLTestCase, JSONWebTokenTestCase):
             content['data']
         )
 
-    def test_saved_foods(self):
-        response = self.query(
-            '''
-            {
-              savedFoods {
-                id
+    def test_create_saved_foods(self):
+        ''' Test the createSavedFood mutation '''
+        query = '''
+        mutation {
+            createSavedFood(foodId: 1) {
                 user {
-                    id
                     username
-                    email
-                    password
                 }
                 food {
-                    id
                     name
-                    nutriscore
-                    url
-                    image
-                    category
                 }
-              }
             }
-            '''
-        )
+        }'''
 
-        self.assertResponseNoErrors(response)
+        response = self.client.execute(query)
+        self.assertIsNone(response.errors)
 
     GRAPHQL_SCHEMA = Mutation
 
     def test_create_user(self):
+        ''' Test the createUser mutation '''
         response = self.query(
             '''
             mutation {
@@ -104,6 +95,7 @@ class FoodTestCase(GraphQLTestCase, JSONWebTokenTestCase):
         )
 
     def test_me(self):
+        ''' Test the me query '''
         query = '''
         {
             me {
