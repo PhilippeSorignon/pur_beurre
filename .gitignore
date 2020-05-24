@@ -1,3 +1,6 @@
+.gitignore
+react-frontend/
+
 # Django #
 *.log
 *.pot
