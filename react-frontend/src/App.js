@@ -1,20 +1,20 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Masthead from './components/Masthead';
-import About from './components/About';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Masthead />
-      <About />
-      <Contact />
-      <Footer />
-    </>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={ Home } />
+        <Route exact path="/login" component={ Login } />
+        <Route path="/signup" component={ Signup } />
+      </Switch>
+    </Router>
   );
 }
 
