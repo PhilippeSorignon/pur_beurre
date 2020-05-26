@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
+  signout = () => {
+    localStorage.removeItem('authToken');
+  }
+
   render() {
     return (
       <nav
@@ -29,20 +33,42 @@ class Navbar extends React.Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarResponsive">
-            <ul className="navbar-nav ml-auto my-2 my-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link js-scroll-trigger" to="login">
-                  Connection
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link js-scroll-trigger" to="results/nutella">
-                  Inscription
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {localStorage.authToken
+            ? <div className="collapse navbar-collapse" id="navbarResponsive">
+                <ul className="navbar-nav ml-auto my-2 my-lg-0">
+                  <li className="nav-item">
+                    <a className="nav-link js-scroll-trigger" href="#about">
+                      <i className="fas fa-user" />
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link js-scroll-trigger" href="#services">
+                      <i className="fas fa-carrot" />
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link js-scroll-trigger" onClick={this.signout}>
+                      <i className="fas fa-sign-out-alt" />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            : <div className="collapse navbar-collapse" id="navbarResponsive">
+                <ul className="navbar-nav ml-auto my-2 my-lg-0">
+                  <li className="nav-item">
+                    <Link className="nav-link js-scroll-trigger" to="login">
+                      Connection
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link js-scroll-trigger" to="signup">
+                      Inscription
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+          }
+
         </div>
       </nav>
     );

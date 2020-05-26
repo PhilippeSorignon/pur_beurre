@@ -1,6 +1,7 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
+import Navbar from '../components/Navbar';
 import Masthead2 from '../components/Masthead2';
 import Results from '../components/Results';
 
@@ -9,6 +10,7 @@ class ResultsTitle extends React.Component {
   render() {
     return (
       <>
+        <Navbar />
         <Masthead2 />
         <Query
           query={TITLE_QUERY}
