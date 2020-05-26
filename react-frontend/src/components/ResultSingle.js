@@ -1,135 +1,46 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 class ResultSingle extends React.Component {
+  constructor(props) {
+    super(props);
+    switch (this.props.nutriscore) {
+      case "a": this.state = ({pillColor: "#0a8b31"}); break;
+      case "b": this.state = ({pillColor: "#9ac430"}); break;
+      case "c": this.state = ({pillColor: "#fbb901"}); break;
+      case "d": this.state = ({pillColor: "#ea5b0d"}); break;
+      default: this.state = ({pillColor: "#ce171b"}); break;
+    };
+  }
   render() {
     return (
-      <div
-        className="row row-cols-1 row-cols-md-3"
-        style={{
-          marginTop: "40px"
-        }}
-      >
         <div className="col mb-4">
           <div className="card">
             <span
               className="badge badge-pill"
               style={{
-                background: "green"
+                background: `${this.state.pillColor}`
               }}
             >
-              <p>A</p>
+              <p>{this.props.nutriscore}</p>
             </span>
-            <img
-              src="https://static.openfoodfacts.org/images/products/405/648/913/7108/front_fr.22.full.jpg"
-              className="card-img-top"
-              alt="..."
-            />
+            <Link to={`/results/${this.props.category}`}>
+              <img
+                src={this.props.image}
+                className="card-img-top"
+                alt={this.props.name}
+              />
+            </Link>
             <div className="card-body">
-              <h5 className="card-title">Emmental</h5>
-              <a href>
-                <i className="far fa-save" /> Sauvegarder
-              </a>
+              <h5 className="card-title">{this.props.name}</h5>
+              {localStorage.authToken &&
+                <a href>
+                  <i className="far fa-save" /> Sauvegarder
+                </a>
+              }
             </div>
           </div>
         </div>
-        <div className="col mb-4">
-          <div className="card">
-            <img src="..." className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col mb-4">
-          <div className="card">
-            <img src="..." className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col mb-4">
-          <div className="card">
-            <img src="..." className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col mb-4">
-          <div className="card">
-            <span
-              className="badge badge-pill"
-              style={{
-                background: "green"
-              }}
-            >
-              <p>A</p>
-            </span>
-            <img src="..." className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col mb-4">
-          <div className="card">
-            <img src="..." className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col mb-4">
-          <div className="card">
-            <img src="..." className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col mb-4">
-          <div className="card">
-            <img src="..." className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
     );
   }
 }

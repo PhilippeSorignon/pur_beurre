@@ -9,7 +9,7 @@ class Navbar extends React.Component {
         id="mainNav"
       >
         <div className="container">
-          <a className="navbar-brand js-scroll-trigger" href="#page-top">
+          <Link className="navbar-brand js-scroll-trigger" to="/">
             <img
               src="static/assets/img/logo_pur_beurre.png"
               alt
@@ -17,7 +17,7 @@ class Navbar extends React.Component {
               width="50px"
             />
             Pur Beurre
-          </a>
+          </Link>
           <button
             className="navbar-toggler navbar-toggler-right"
             type="button"
@@ -37,7 +37,7 @@ class Navbar extends React.Component {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link js-scroll-trigger" to="signup">
+                <Link className="nav-link js-scroll-trigger" to="results/nutella">
                   Inscription
                 </Link>
               </li>

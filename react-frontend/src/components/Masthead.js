@@ -1,6 +1,14 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 class Masthead extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: ""
+    }
+  }
+
   render() {
     return (
       <header className="masthead">
@@ -24,15 +32,18 @@ class Masthead extends React.Component {
                   placeholder="Produit"
                   aria-label="produit"
                   aria-describedby="button-addon2"
+                  onChange={ event => this.setState({ search: event.target.value }) }
                 />
                 <div className="input-group-append">
-                  <button
+                  <Link
+                    to={`search/${this.state.search}`}
                     className="btn btn-outline-secondary"
+                    role="button"
                     type="button"
                     id="button-addon2"
                   >
                     Chercher
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
