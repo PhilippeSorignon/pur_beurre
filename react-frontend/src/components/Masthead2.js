@@ -7,7 +7,7 @@ class Masthead2 extends React.Component {
         id="masthead-2"
         style={{
           backgroundImage:
-            'url("https://static.openfoodfacts.org/images/products/405/648/913/7108/front_fr.22.full.jpg")'
+            `url(${this.props.image})`
         }}
       >
         <div className="container h-100">
@@ -19,7 +19,7 @@ class Masthead2 extends React.Component {
               }}
             >
               <h1 className="text-uppercase text-white font-weight-bold">
-                Fromage
+                {this.props.heading}
               </h1>
             </div>
           </div>

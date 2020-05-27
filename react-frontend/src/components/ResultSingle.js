@@ -11,7 +11,15 @@ class ResultSingle extends React.Component {
       case "d": this.state = ({pillColor: "#ea5b0d"}); break;
       default: this.state = ({pillColor: "#ce171b"}); break;
     };
+
+
   }
+
+  handleClick = () => {
+    localStorage.setItem('searchImage', this.props.image);
+    localStorage.setItem('searchName', this.props.name);
+  }
+
   render() {
     return (
         <div className="col mb-4">
@@ -24,7 +32,7 @@ class ResultSingle extends React.Component {
             >
               <p>{this.props.nutriscore}</p>
             </span>
-            <Link to={`/results/${this.props.category}`}>
+            <Link onClick={this.handleClick} to={`/results/${this.props.category}`}>
               <img
                 src={this.props.image}
                 className="card-img-top"

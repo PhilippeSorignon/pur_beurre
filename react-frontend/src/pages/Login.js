@@ -3,6 +3,7 @@ import {Redirect} from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import Navbar from '../components/Navbar';
+import Alert from '../components/Alert';
 
 class Login extends React.Component {
   constructor(props) {
@@ -67,6 +68,7 @@ class Login extends React.Component {
                       {loading ? "Chargement..." : "Connection"}
                     </button>
                   </div>
+                  {error && <Alert type="danger" message={error.message} />}
                 </form>
               )
             }}

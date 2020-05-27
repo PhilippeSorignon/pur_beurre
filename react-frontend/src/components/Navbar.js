@@ -15,7 +15,7 @@ class Navbar extends React.Component {
         <div className="container">
           <Link className="navbar-brand js-scroll-trigger" to="/">
             <img
-              src="static/assets/img/logo_pur_beurre.png"
+              src="/static/assets/img/logo_pur_beurre.png"
               alt
               className="mr-2"
               width="50px"
@@ -56,12 +56,12 @@ class Navbar extends React.Component {
             : <div className="collapse navbar-collapse" id="navbarResponsive">
                 <ul className="navbar-nav ml-auto my-2 my-lg-0">
                   <li className="nav-item">
-                    <Link className="nav-link js-scroll-trigger" to="login">
+                    <Link className="nav-link js-scroll-trigger" to="/login">
                       Connection
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link js-scroll-trigger" to="signup">
+                    <Link className="nav-link js-scroll-trigger" to="/signup">
                       Inscription
                     </Link>
                   </li>
