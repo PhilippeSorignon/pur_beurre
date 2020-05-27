@@ -57,7 +57,7 @@ class Navbar extends React.Component {
                 <ul className="navbar-nav ml-auto my-2 my-lg-0">
                   <li className="nav-item">
                     <Link className="nav-link js-scroll-trigger" to="/login">
-                      Connection
+                      Connexion
                     </Link>
                   </li>
                   <li className="nav-item">

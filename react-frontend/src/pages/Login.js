@@ -37,7 +37,7 @@ class Login extends React.Component {
                 <form onSubmit={event => this.handleSubmit(event, tokenAuth)}>
                   <div className="icon">
                     <i className="fas fa-sign-in-alt" />
-                    <h1>Connection</h1>
+                    <h1>Connexion</h1>
                   </div>
                   <div className="form-group">
                     <input
@@ -65,7 +65,7 @@ class Login extends React.Component {
                         !this.state.password.trim()
                       }
                     >
-                      {loading ? "Chargement..." : "Connection"}
+                      {loading ? "Chargement..." : "Connexion"}
                     </button>
                   </div>
                   {error && <Alert type="danger" message={error.message} />}
