@@ -5,8 +5,7 @@ import Navbar from '../components/Navbar';
 import Masthead2 from '../components/Masthead2';
 import Results from '../components/Results';
 import Alert from '../components/Alert';
-import Loader from 'react-loader-spinner';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from '../components/Loader';
 
 
 class ResultsCategory extends React.Component {
@@ -25,7 +24,7 @@ class ResultsCategory extends React.Component {
                 <div className="container">
                   <div className="row align-items-center justify-content-center text-center">
                     <div className="col-md-12">
-                      <Loader type="TailSpin" color="#C45525" height={80} width={80} />
+                      <Loader />
                     </div>
                   </div>
                 </div>
