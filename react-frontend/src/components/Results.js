@@ -1,5 +1,6 @@
 import React from "react";
 import ResultSingle from "./ResultSingle";
+import Alert from '../components/Alert';
 
 class Results extends React.Component {
   render() {
@@ -18,7 +19,7 @@ class Results extends React.Component {
             }}
           >
             {this.props.foods.length === 0 &&
-              <p>Aucun résultat...</p>
+              <Alert type="danger" message="Aucun résultat ..." />
             }
             {this.props.foods.map(food =>
               <ResultSingle
