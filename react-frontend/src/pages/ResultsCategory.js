@@ -35,6 +35,7 @@ class ResultsCategory extends React.Component {
               <Results
                 headline="Vous pouvez remplacer cet aliment par:"
                 foods={data.foods}
+                search={true}
               />
             )
           }}

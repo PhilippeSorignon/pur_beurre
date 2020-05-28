@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import SaveFood from './SaveFood';
+import UnsaveFood from './UnsaveFood';
 
 class ResultSingle extends React.Component {
   constructor(props) {
@@ -45,7 +46,12 @@ class ResultSingle extends React.Component {
             <div className="card-body">
               <h5 className="card-title">{this.props.name}</h5>
               {localStorage.authToken &&
-                <SaveFood id={this.props.id} />
+                <>
+                  {this.props.search
+                    ? <SaveFood id={this.props.id} />
+                    : <UnsaveFood id={this.props.id} />
+                  }
+                </>
               }
             </div>
           </div>

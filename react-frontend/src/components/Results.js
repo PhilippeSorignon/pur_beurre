@@ -28,6 +28,7 @@ class Results extends React.Component {
                 nutriscore={food.nutriscore}
                 image={food.image}
                 category={food.category}
+                search={this.props.search}
               />
             )}
             </div>

@@ -42,6 +42,7 @@ class ResultsTitle extends React.Component {
                 <Results
                   headline="De quel produit parlez-vous ?"
                   foods={data.foods}
+                  search={false}
                 />
               </>
             )
