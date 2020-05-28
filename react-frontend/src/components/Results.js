@@ -23,6 +23,7 @@ class Results extends React.Component {
             }
             {this.props.foods.map(food =>
               <ResultSingle
+                id={food.id}
                 name={food.name}
                 nutriscore={food.nutriscore}
                 image={food.image}

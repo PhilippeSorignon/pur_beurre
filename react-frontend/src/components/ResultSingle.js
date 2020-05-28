@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { Mutation } from 'react-apollo';
+import { gql } from 'apollo-boost';
+import SaveFood from './SaveFood';
 
 class ResultSingle extends React.Component {
   constructor(props) {
@@ -42,9 +45,7 @@ class ResultSingle extends React.Component {
             <div className="card-body">
               <h5 className="card-title">{this.props.name}</h5>
               {localStorage.authToken &&
-                <a href>
-                  <i className="far fa-save" /> Sauvegarder
-                </a>
+                <SaveFood id={this.props.id} />
               }
             </div>
           </div>
