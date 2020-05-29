@@ -2,6 +2,7 @@ import React from "react";
 import { Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import Alert from './Alert';
+import MY_PRODUCTS_QUERY from '../pages/MyProducts';
 
 class UnsaveFood extends React.Component {
   render() {
@@ -9,9 +10,7 @@ class UnsaveFood extends React.Component {
       <Mutation
         mutation={SAVE_MUTATION}
         variables={{ foodId: this.props.id }}
-        onCompleted={data => {
-          console.log(data);
-        }}
+        refetchQueries={[{ query: MY_PRODUCTS_QUERY }]}
       >
         {(createSavedFood, { loading, error, called, client }) => {
           return (

@@ -3,19 +3,22 @@ import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import Navbar from '../components/Navbar';
 import Masthead2 from '../components/Masthead2';
-import Results from '../components/Results';
+import ResultsMyProducts from '../components/ResultsMyProducts';
 import Alert from '../components/Alert';
 import Loader from '../components/Loader';
 
 
-class ResultsTitle extends React.Component {
+class MyProducts extends React.Component {
   render() {
     return (
       <>
         <Navbar />
+        <Masthead2
+          heading="Mes Produits"
+          image="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+        />
         <Query
-          query={TITLE_QUERY}
-          variables={{ title: this.props.match.params.title }}
+          query={MY_PRODUCTS_QUERY}
         >
           {({ loading, error, data }) => {
             if (loading) return (
@@ -32,17 +35,10 @@ class ResultsTitle extends React.Component {
             if (error) return <Alert type="danger" message={error.message} />
             return (
               <>
-                <Masthead2
-                  heading={this.props.match.params.title}
-                  image={
-                    data.foods[1]
-                    ? data.foods[0].image
-                    : "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-                  } />
-                <Results
-                  headline="De quel produit parlez-vous ?"
-                  foods={data.foods}
-                  search={true}
+                <ResultsMyProducts
+                  headline="Mes Produits"
+                  foods={data.me.savedfoodSet}
+                  search={false}
                 />
               </>
             )
@@ -53,17 +49,21 @@ class ResultsTitle extends React.Component {
   }
 }
 
-const TITLE_QUERY = gql`
-  query($title: String!) {
-    foods(searchTitle: $title){
+const MY_PRODUCTS_QUERY = gql`
+{
+  me {
+    savedfoodSet {
       id
-      name
-      nutriscore
-      url
-      image
-      category
+      food {
+        id
+        name
+        nutriscore
+        image
+        category
+      }
     }
   }
+}
 `
 
-export default ResultsTitle;
+export default MyProducts;

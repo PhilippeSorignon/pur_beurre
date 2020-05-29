@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import ResultsTitle from './pages/ResultsTitle';
 import ResultsCategory from './pages/ResultsCategory';
+import MyProducts from './pages/MyProducts';
 import Signup from './pages/Signup';
 import Footer from './components/Footer';
 
@@ -14,10 +15,11 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={ Home } />
-        <Route exact path="/login" component={ Login } />
+        <Route path="/login" component={ Login } />
         <Route path="/signup" component={ Signup } />
         <Route path="/search/:title" component={ ResultsTitle } />
         <Route path="/results/:category" component={ ResultsCategory } />
+        <Route path="/products" component={ MyProducts } />
       </Switch>
       <Footer />
     </Router>

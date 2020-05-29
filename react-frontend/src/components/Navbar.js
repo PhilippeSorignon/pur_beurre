@@ -42,9 +42,9 @@ class Navbar extends React.Component {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link js-scroll-trigger" href="#services">
+                    <Link className="nav-link js-scroll-trigger" to="/products">
                       <i className="fas fa-carrot" />
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link js-scroll-trigger" onClick={this.signout}>
