@@ -13,15 +13,14 @@ class Navbar extends React.Component {
         id="mainNav"
       >
         <div className="container">
-          <Link className="navbar-brand js-scroll-trigger" to="/">
+          <a className="navbar-brand js-scroll-trigger" href="/">
             <img
               src="/static/assets/img/logo_pur_beurre.png"
-              alt
               className="mr-2"
               width="50px"
             />
             Pur Beurre
-          </Link>
+          </a>
           <button
             className="navbar-toggler navbar-toggler-right"
             type="button"
@@ -34,7 +33,7 @@ class Navbar extends React.Component {
             <span className="navbar-toggler-icon" />
           </button>
           {localStorage.authToken
-            ? <div className="collapse navbar-collapse" id="navbarResponsive">
+            ? <div className="collapse navbar-collapse" id="navbarResponsive" data-testid="loggednavbar">
                 <ul className="navbar-nav ml-auto my-2 my-lg-0">
                   <li className="nav-item">
                     <a className="nav-link js-scroll-trigger" href="#about">
@@ -42,28 +41,28 @@ class Navbar extends React.Component {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link js-scroll-trigger" to="/products">
+                    <a className="nav-link js-scroll-trigger" href="/products">
                       <i className="fas fa-carrot" />
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link js-scroll-trigger" onClick={this.signout}>
+                    <a className="nav-link js-scroll-trigger" onClick={this.signout}>
                       <i className="fas fa-sign-out-alt" />
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </div>
             : <div className="collapse navbar-collapse" id="navbarResponsive">
                 <ul className="navbar-nav ml-auto my-2 my-lg-0">
                   <li className="nav-item">
-                    <Link className="nav-link js-scroll-trigger" to="/login">
+                    <a className="nav-link js-scroll-trigger" href="/login">
                       Connexion
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link js-scroll-trigger" to="/signup">
+                    <a className="nav-link js-scroll-trigger" href="/signup">
                       Inscription
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </div>

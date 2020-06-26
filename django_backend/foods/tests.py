@@ -88,7 +88,7 @@ class FoodTestCase(GraphQLTestCase, JSONWebTokenTestCase):
         self.assertDictEqual(
             {'createUser': {
                 'user': {
-                    'id': '2',
+                    'id': '3',
                     'username': 'Test',
                     'email': 'test@mail.com'}}},
             content['data']

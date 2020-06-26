@@ -35,15 +35,15 @@ class Masthead extends React.Component {
                   onChange={ event => this.setState({ search: event.target.value }) }
                 />
                 <div className="input-group-append">
-                  <Link
-                    to={`search/${this.state.search}`}
+                  <a
+                    href={`search/${this.state.search}`}
                     className="btn btn-outline-secondary"
                     role="button"
                     type="button"
                     id="button-addon2"
                   >
                     Chercher
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

@@ -6,10 +6,10 @@ class Footer extends React.Component {
       <footer className="bg-light py-5">
         <div className="footer-container">
           <div>
-            <a href>Mentions Légales</a>
+            <a href="/">Mentions Légales</a>
           </div>
           <div>
-            <a href>Contact</a>
+            <a href="/">Contact</a>
           </div>
         </div>
       </footer>

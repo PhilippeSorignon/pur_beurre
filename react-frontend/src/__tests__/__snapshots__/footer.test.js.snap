@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer matches snapshot 1`] = `
+<footer
+  className="bg-light py-5"
+>
+  <div
+    className="footer-container"
+  >
+    <div>
+      <a
+        href="/"
+      >
+        Mentions Légales
+      </a>
+    </div>
+    <div>
+      <a
+        href="/"
+      >
+        Contact
+      </a>
+    </div>
+  </div>
+</footer>
+`;
