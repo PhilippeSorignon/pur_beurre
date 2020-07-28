@@ -36,7 +36,7 @@ class Navbar extends React.Component {
             ? <div className="collapse navbar-collapse" id="navbarResponsive" data-testid="loggednavbar">
                 <ul className="navbar-nav ml-auto my-2 my-lg-0">
                   <li className="nav-item">
-                    <a className="nav-link js-scroll-trigger" href="#about">
+                    <a className="nav-link js-scroll-trigger" href="/me">
                       <i className="fas fa-user" />
                     </a>
                   </li>

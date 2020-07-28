@@ -7,6 +7,7 @@ import ResultsTitle from './pages/ResultsTitle';
 import ResultsCategory from './pages/ResultsCategory';
 import Product from './pages/Product';
 import MyProducts from './pages/MyProducts';
+import MyAccount from './pages/MyAccount';
 import Signup from './pages/Signup';
 import Footer from './components/Footer';
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/results/:category" component={ ResultsCategory } />
         <Route path="/product/:id" component={ Product } />
         <Route path="/products" component={ MyProducts } />
+        <Route path="/me" component={ MyAccount } />
       </Switch>
       <Footer />
     </Router>
