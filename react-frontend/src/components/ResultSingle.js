@@ -46,6 +46,7 @@ class ResultSingle extends React.Component {
             <div className="card-body">
               <h5 className="card-title">{this.props.name}</h5>
               <Link to={`/product/${this.props.id}`}>Fiche Produit</Link>
+              <br/>
               {localStorage.authToken &&
                 <>
                   {this.props.search
