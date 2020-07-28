@@ -29,6 +29,7 @@ class Query(graphene.ObjectType):
         ),
         description="Get a list of foods"
     )
+    food = graphene.Field(FoodType, id=graphene.ID())
     savedFoods = graphene.List(
         SavedFoodType,
         description='Get a list of Saved Foods'
@@ -51,6 +52,13 @@ class Query(graphene.ObjectType):
             return Food.objects.filter(search)
 
         return Food.objects.all()
+
+
+    def resolve_food(self, info, **kwargs):
+        try:
+            return Food.objects.get(pk=kwargs.get('id'))
+        except ObjectDoesNotExist:
+            return None
 
     def resolve_saved_food(self, info):
         return SavedFood.objects.all()
