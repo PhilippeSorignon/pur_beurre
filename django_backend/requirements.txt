@@ -13,7 +13,7 @@ graphql-relay==2.0.1
 idna==2.9
 promise==2.3
 psycopg2==2.8.5
-PyJWT==1.7.1
+PyJWT==2.4.0
 pytz==2020.1
 requests==2.23.0
 Rx==1.6.1
